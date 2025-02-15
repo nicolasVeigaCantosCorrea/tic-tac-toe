@@ -1,0 +1,26 @@
+[
+{
+  "directory": "C:/Users/ncant/projects/tic-tac-toe/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/program.dir/includes_CXX.rsp -g -o CMakeFiles\\program.dir\\src\\board.cpp.obj -c C:\\Users\\ncant\\projects\\tic-tac-toe\\src\\board.cpp",
+  "file": "C:/Users/ncant/projects/tic-tac-toe/src/board.cpp",
+  "output": "CMakeFiles/program.dir/src/board.cpp.obj"
+},
+{
+  "directory": "C:/Users/ncant/projects/tic-tac-toe/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/program.dir/includes_CXX.rsp -g -o CMakeFiles\\program.dir\\src\\game.cpp.obj -c C:\\Users\\ncant\\projects\\tic-tac-toe\\src\\game.cpp",
+  "file": "C:/Users/ncant/projects/tic-tac-toe/src/game.cpp",
+  "output": "CMakeFiles/program.dir/src/game.cpp.obj"
+},
+{
+  "directory": "C:/Users/ncant/projects/tic-tac-toe/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/program.dir/includes_CXX.rsp -g -o CMakeFiles\\program.dir\\src\\main.cpp.obj -c C:\\Users\\ncant\\projects\\tic-tac-toe\\src\\main.cpp",
+  "file": "C:/Users/ncant/projects/tic-tac-toe/src/main.cpp",
+  "output": "CMakeFiles/program.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/ncant/projects/tic-tac-toe/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/program.dir/includes_CXX.rsp -g -o CMakeFiles\\program.dir\\src\\player.cpp.obj -c C:\\Users\\ncant\\projects\\tic-tac-toe\\src\\player.cpp",
+  "file": "C:/Users/ncant/projects/tic-tac-toe/src/player.cpp",
+  "output": "CMakeFiles/program.dir/src/player.cpp.obj"
+}
+]
