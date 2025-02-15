@@ -7,6 +7,7 @@ private:
     /* data */
 public:
     //declarer fonctions
+
 };
 
 #endif

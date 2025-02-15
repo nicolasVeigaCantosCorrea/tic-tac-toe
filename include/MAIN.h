@@ -5,5 +5,6 @@
 #include "GAME.h"
 #include "PLAYER.h"
 
+int mode;
 
 #endif
