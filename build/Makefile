@@ -224,6 +224,30 @@ src/player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\program.dir\build.make CMakeFiles/program.dir/src/player.cpp.s
 .PHONY : src/player.cpp.s
 
+src/tests.obj: src/tests.cpp.obj
+.PHONY : src/tests.obj
+
+# target to build an object file
+src/tests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\program.dir\build.make CMakeFiles/program.dir/src/tests.cpp.obj
+.PHONY : src/tests.cpp.obj
+
+src/tests.i: src/tests.cpp.i
+.PHONY : src/tests.i
+
+# target to preprocess a source file
+src/tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\program.dir\build.make CMakeFiles/program.dir/src/tests.cpp.i
+.PHONY : src/tests.cpp.i
+
+src/tests.s: src/tests.cpp.s
+.PHONY : src/tests.s
+
+# target to generate assembly for a file
+src/tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\program.dir\build.make CMakeFiles/program.dir/src/tests.cpp.s
+.PHONY : src/tests.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -245,6 +269,9 @@ help:
 	@echo ... src/player.obj
 	@echo ... src/player.i
 	@echo ... src/player.s
+	@echo ... src/tests.obj
+	@echo ... src/tests.i
+	@echo ... src/tests.s
 .PHONY : help
 
 

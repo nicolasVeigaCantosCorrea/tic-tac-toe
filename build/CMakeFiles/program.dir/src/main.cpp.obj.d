@@ -2,8 +2,6 @@ CMakeFiles/program.dir/src/main.cpp.obj: \
  C:\Users\ncant\projects\tic-tac-toe\src\main.cpp \
  C:/Users/ncant/projects/tic-tac-toe/include/MAIN.h \
  C:/Users/ncant/projects/tic-tac-toe/include/BOARD.h \
- C:/Users/ncant/projects/tic-tac-toe/include/GAME.h \
- C:/Users/ncant/projects/tic-tac-toe/include/PLAYER.h \
  C:/msys64/ucrt64/include/c++/14.2.0/iostream \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -139,4 +137,14 @@ CMakeFiles/program.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/14.2.0/istream \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/istream.tcc \
+ C:/msys64/ucrt64/include/c++/14.2.0/vector \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_bvector.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/vector.tcc \
+ C:/Users/ncant/projects/tic-tac-toe/include/GAME.h \
+ C:/Users/ncant/projects/tic-tac-toe/include/PLAYER.h \
+ C:/Users/ncant/projects/tic-tac-toe/include/TESTS.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/sstream \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc

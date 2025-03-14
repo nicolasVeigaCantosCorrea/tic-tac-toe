@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/program.dir/src/main.cpp.obj.d"
   "CMakeFiles/program.dir/src/player.cpp.obj"
   "CMakeFiles/program.dir/src/player.cpp.obj.d"
+  "CMakeFiles/program.dir/src/tests.cpp.obj"
+  "CMakeFiles/program.dir/src/tests.cpp.obj.d"
   "libprogram.dll.a"
   "program.exe"
   "program.exe.manifest"

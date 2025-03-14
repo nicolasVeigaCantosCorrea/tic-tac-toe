@@ -1,7 +1,5 @@
 #include "../include/GAME.h"
 
-#include <iostream>
-
 using std::cout;
 using std::cin;
 

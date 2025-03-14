@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/ncant/projects/tic-tac-toe/src/game.cpp" "CMakeFiles/program.dir/src/game.cpp.obj" "gcc" "CMakeFiles/program.dir/src/game.cpp.obj.d"
   "C:/Users/ncant/projects/tic-tac-toe/src/main.cpp" "CMakeFiles/program.dir/src/main.cpp.obj" "gcc" "CMakeFiles/program.dir/src/main.cpp.obj.d"
   "C:/Users/ncant/projects/tic-tac-toe/src/player.cpp" "CMakeFiles/program.dir/src/player.cpp.obj" "gcc" "CMakeFiles/program.dir/src/player.cpp.obj.d"
+  "C:/Users/ncant/projects/tic-tac-toe/src/tests.cpp" "CMakeFiles/program.dir/src/tests.cpp.obj" "gcc" "CMakeFiles/program.dir/src/tests.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

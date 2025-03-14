@@ -1,5 +1,6 @@
-CMakeFiles/program.dir/src/board.cpp.obj: \
- C:\Users\ncant\projects\tic-tac-toe\src\board.cpp \
+CMakeFiles/program.dir/src/tests.cpp.obj: \
+ C:\Users\ncant\projects\tic-tac-toe\src\tests.cpp \
+ C:/Users/ncant/projects/tic-tac-toe/include/TESTS.h \
  C:/Users/ncant/projects/tic-tac-toe/include/BOARD.h \
  C:/msys64/ucrt64/include/c++/14.2.0/iostream \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
@@ -142,5 +143,5 @@ CMakeFiles/program.dir/src/board.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_bvector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/vector.tcc \
- C:/msys64/ucrt64/include/c++/14.2.0/sstream \
- C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc
+ C:/Users/ncant/projects/tic-tac-toe/include/GAME.h \
+ C:/Users/ncant/projects/tic-tac-toe/include/PLAYER.h
