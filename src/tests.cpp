@@ -1,7 +1,5 @@
 #include "../include/TESTS.h"
 
-
-
     void Tests::testPlayer (){
     // PLAYER TEST
     char player1Choice = 'X';
@@ -23,6 +21,8 @@
     //BOARD TEST
     int size = 8;
     Board board(size);
-    board.modifyBoard(4,4,'X');
+    int x = 3;
+    int y = 3;
+    board.modifyBoard(x,y,'X');
     board.print();
     }

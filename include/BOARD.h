@@ -12,7 +12,7 @@ private:
 public:
     //declarer fonctions
     Board (int& p_size); // Création du board
-    void modifyBoard (int ligne, int colonne, const char& role);    // Modification board
+    void modifyBoard (int& ligne, int& colonne, const char& role);    // Modification board
     void print() const;    // Affichage board
 };
 

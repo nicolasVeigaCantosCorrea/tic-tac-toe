@@ -7,7 +7,7 @@ Board::Board (int& p_size)
 : m_size(p_size), board(p_size, std::vector<char> (p_size,' '))
 {}
 
-void Board::modifyBoard (int ligne, int colonne, const char& role)
+void Board::modifyBoard (int& ligne, int& colonne, const char& role)
 {
     if (ligne < m_size && colonne < m_size) // faite une classe pour gerer erreurs.
     {
