@@ -7,21 +7,17 @@ using std::cin;
 
 int main()
 {
-    bool isWinner = false;
-    Player player1;
-    Player player2;
-    Game gameObject;
-
-    gameObject.gameMode(mode);
-
-    // "X" or "O" should be in player class
+    char player1Choice = 'X';
+    char player2Choice = '0';
     
-
-    // do{ // display board with players 
-
-    // }while (!isWinner);
-
-
+    Player player1("Nicolas", player1Choice);
+    Player player2("Marcelo", player2Choice);
+    
+    cout << "\tPlayer 1: \n";
+    player1.afficherInfo();
+    cout << "\tPlayer 2: \n";
+    player2.afficherInfo();
+    cout << player1.getRole();
 
 
     return 0;

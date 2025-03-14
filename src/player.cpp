@@ -2,8 +2,22 @@
 
 #include <iostream>
 
-using std::cin;
-using std::cout;
+Player::Player(const std::string& p_nom, const char& p_role)
+: m_nom(p_nom), m_role(p_role)
+{ }
 
-// Do you want to play with "X" (y/n):
+bool Player::isX () const
+{
+    return m_role == 'X';
+}
 
+char Player::getRole () const
+{
+    return m_role;
+}
+
+void Player::afficherInfo () const
+{
+std::cout << "Nom: " << m_nom << "\n";
+std::cout << "joueurId: " << getRole() << "\n";
+}
