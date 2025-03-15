@@ -16,7 +16,7 @@ Menu::Menu(Config& p_config)
 void Menu::chooseMode()
 {
     cout << "1) Player vs Player\n";
-    cout << "2) Player vs Machine\n";
+    cout << "2) Player vs Machine\n\n";
     cout << "Pick either 1 or 2 for your game mode: ";
 
     while (true)
@@ -29,7 +29,7 @@ void Menu::chooseMode()
         }
         else
         {
-            cout << " ** Please write a valid option (1 or 2) **\n";
+            cout << " ** Please write a valid option (1 or 2) **\n\n";
             cout << "Game mode picked: ";
         }
     } 

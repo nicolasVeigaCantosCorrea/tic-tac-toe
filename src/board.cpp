@@ -1,18 +1,23 @@
 #include "Board.h"
 
-Board::Board (int& p_size) 
+Board::Board (int p_size) 
 : m_size(p_size), board(p_size, std::vector<char> (p_size,' '))
 {}
 
 void Board::modifyBoard (int& ligne, int& colonne, const char& role)
 {
-    if (ligne < m_size && colonne < m_size) // faite une classe pour gerer erreurs.
+    if (ligne <= m_size && colonne <= m_size) // faite une classe pour gerer erreurs.
     {
         ligne -= 1;
         colonne -= 1;
         board[ligne][colonne] = role;
     }  
 } 
+
+char Board::getValue(int& ligne, int& colonne) const
+{
+    return board[ligne][colonne];
+}
 
 void Board::print () const
 {

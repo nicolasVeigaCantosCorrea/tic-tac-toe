@@ -7,8 +7,8 @@ class Config
 {
 private:
     /* data */
-    int m_mode;
-    int m_boardSize;
+    int m_mode; // default = 1; PvP
+    int m_boardSize; // default = 3; 3x3
 public:
     //declarer fonctions
     Config();

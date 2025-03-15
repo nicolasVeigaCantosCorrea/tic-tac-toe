@@ -1,7 +1,7 @@
 #include "Config.h"
 
 Config::Config()
-	:m_mode(2), m_boardSize(3)
+	:m_mode(1), m_boardSize(3)
 { }
 
 void Config::setMode(int p_mode) 

@@ -3,16 +3,13 @@
 int main()
 {
     bool isValid = true;
-    cout << "1) Play\n";
-    cout << "2) Options\n";
-    cout << "Pick 1 to play or 2 to config the game: ";
-    
-    Config config;
-    Player* player1 = nullptr; // Declare pointers to Player objects
-    Player* player2 = nullptr;
-    Menu* menu = nullptr;
-    Game* game = nullptr;
+    home << "===== Tic-Tac-Toe =====\n";
+    home << "1) Play\n";
+    home << "2) Options\n";
+    home << "3) Exit\n\n";
+    home << "Pick 1 to play or 2 to config the game: ";
 
+    std::cout << home.str();
     do
     {
         isValid = true;
@@ -20,15 +17,17 @@ int main()
 
         switch (choice) {
         case 1:
-            player1 = new Player("1", 'X'); // Create Player 1
+            player1 = new Player("1", 'X'); // Create Player 1 // Probably create Players outside of loop. Make it possible to modify name with menu.
             player2 = new Player("AI", 'O'); // Create Player 2
-            game = new Game(); // Create Game
+            game = new Game(*player1, *player2, config); // Create Game
             break;
 
         case 2:
             menu = new Menu(config);
-            game = new Game(); // Create Game
+            game = new Game(*player1, *player2, config); // Create Game
             break;
+        case 3:
+            return 0;
 
         default:
             std::cout << "Invalid choice!\n";
@@ -37,9 +36,9 @@ int main()
             break;
         }
     } while (!isValid);
-
-    //Tests tests;
-    ////tests.testBoard();
-    //tests.testMenu();
+    delete player1;
+    delete player2;
+    delete menu;
+    delete game;
     return 0;
 }
