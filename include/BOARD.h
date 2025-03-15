@@ -1,8 +1,12 @@
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef Board_H
+#define Board_H
 
 #include <iostream>
 #include <vector>
+#include <sstream>
+
+using std::cout;
+
 class Board
 {
 private:

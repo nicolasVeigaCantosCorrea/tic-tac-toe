@@ -1,4 +1,4 @@
-#include "../include/TESTS.h"
+#include "Tests.h"
 
     void Tests::testPlayer (){
     // PLAYER TEST
@@ -25,4 +25,10 @@
     int y = 3;
     board.modifyBoard(x,y,'X');
     board.print();
+    }
+
+    void Tests::testMenu() {
+        //MENU TEST
+        Menu menu;
+        
     }

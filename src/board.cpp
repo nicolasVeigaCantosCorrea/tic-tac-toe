@@ -1,7 +1,4 @@
-#include "../include/BOARD.h"
-#include <sstream>
-
-using std::cout;
+#include "Board.h"
 
 Board::Board (int& p_size) 
 : m_size(p_size), board(p_size, std::vector<char> (p_size,' '))

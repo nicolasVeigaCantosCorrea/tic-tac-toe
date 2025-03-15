@@ -1,12 +1,18 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef Main_H
+#define Main_H
 
-#include "BOARD.h"
-#include "GAME.h"
-#include "PLAYER.h"
-#include "PREGAME.h"
-#include "TESTS.h"
+#include "Board.h"
+#include "Game.h"
+#include "Player.h"
+#include "input/Menu.h"
+#include "Tests.h"
 
-int mode;
+#include <iostream>
+#include <sstream>
+
+using std::cout;
+using std::cin;
+
+int choice;
 
 #endif

@@ -1,14 +1,21 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef Game_H
+#define Game_H
 
 #include <iostream>
+#include <vector>
+
+using std::cout;
+using std::cin;
+
 class Game
 {
 private:
     /* data */
+    int m_gameMode;
 public:
     //declarer fonctions
-    void gameMode (int &gameType);
+
+
 };
 
 #endif

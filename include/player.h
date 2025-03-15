@@ -1,5 +1,5 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef Player_H
+#define Player_H
 
 #include <iostream>
 class Player

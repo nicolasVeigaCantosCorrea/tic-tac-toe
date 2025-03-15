@@ -1,6 +1,4 @@
-#include "../include/PLAYER.h"
-
-#include <iostream>
+#include "Player.h"
 
 Player::Player(const std::string& p_nom, const char& p_role)
 : m_nom(p_nom), m_role(p_role)
