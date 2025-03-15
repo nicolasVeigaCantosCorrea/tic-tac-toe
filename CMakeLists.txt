@@ -8,4 +8,4 @@ include_directories(include)
 file(GLOB SOURCES "src/*.cpp" "!src/tempCodeRunnerFile.cpp")
 
 # Create an executable
-add_executable(program ${SOURCES})
+add_executable(program ${SOURCES} "include/PREGAME.h" "src/pregame.cpp")
