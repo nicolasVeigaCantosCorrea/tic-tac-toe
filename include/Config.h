@@ -15,8 +15,8 @@ public:
     void setMode(int p_mode);
     void setBoardSize(int p_size);
 
-    int getMode();
-    int getBoardSize();
+    int getMode() const;
+    int getBoardSize() const;
 };
 
 #endif

@@ -3,6 +3,7 @@
 Menu::Menu(Config& p_config)
     : config(p_config)
 {
+    cout << "\n====== Menu ======\n";
     chooseMode();
     cout << "\n";
     chooseSize();

@@ -10,6 +10,7 @@ int main()
     Config config;
     Player* player1 = nullptr; // Declare pointers to Player objects
     Player* player2 = nullptr;
+    Menu* menu = nullptr;
     Game* game = nullptr;
 
     do
@@ -25,13 +26,14 @@ int main()
             break;
 
         case 2:
-            Menu menu(config);
+            menu = new Menu(config);
             game = new Game(); // Create Game
             break;
 
         default:
             std::cout << "Invalid choice!\n";
             isValid = false;
+            cout << "Pick 1 to play or 2 to config the game: ";
             break;
         }
     } while (!isValid);

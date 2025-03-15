@@ -5,7 +5,7 @@
 #include "Game.h"
 #include "Player.h"
 #include "input/Menu.h"
-#include "Tests.h"
+#include "Config.h"
 
 #include <iostream>
 #include <sstream>

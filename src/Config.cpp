@@ -14,12 +14,12 @@ void Config::setBoardSize(int p_size)
 	m_boardSize = p_size;
 }
 
-int Config::getMode()
+int Config::getMode() const
 {
 	return m_mode;
 }
 
-int Config::getBoardSize()
+int Config::getBoardSize() const
 {
 	return m_boardSize;
 }
