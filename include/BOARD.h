@@ -19,6 +19,7 @@ public:
     void modifyBoard (int& ligne, int& colonne, const char& role);    // Modification board
     char getValue(int& ligne, int& colonne) const; // return role à coord
     void print() const;    // Affichage board
+    //void restartBoard(); // Pour restarter un game.
 };
 
 #endif

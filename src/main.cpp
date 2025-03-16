@@ -2,43 +2,50 @@
 
 int main()
 {
-    bool isValid = true;
-    home << "===== Tic-Tac-Toe =====\n";
+    // HOME DEBUT
+    home << "===== Tic-Tac-Toe =====\n"; 
     home << "1) Play\n";
     home << "2) Options\n";
     home << "3) Exit\n\n";
     home << "Pick 1 to play or 2 to config the game: ";
+    // HOME FIN
 
-    std::cout << home.str();
-    do
+    int choice; // Menu ou Play
+
+    Config config;
+    Player player1("1", 'X'); // For now let's have 2 players only
+    Player player2("2", 'O'); // The goal is to have 2-4 players possibly
+
+    bool isValid = false;
+
+    while (true) 
     {
-        isValid = true;
-        cin >> choice;
+        std::cout << home.str();  // Probablement faire Class Home
+        do
+        {
+            isValid = true;
+            cin >> choice;
 
-        switch (choice) {
-        case 1:
-            player1 = new Player("1", 'X'); // Create Player 1 // Probably create Players outside of loop. Make it possible to modify name with menu.
-            player2 = new Player("AI", 'O'); // Create Player 2
-            game = new Game(*player1, *player2, config); // Create Game
-            break;
+            switch (choice) {
+            case 1: // Create Game
+                game = new Game(player1, player2, config); 
+                delete game;
+                break;
 
-        case 2:
-            menu = new Menu(config);
-            game = new Game(*player1, *player2, config); // Create Game
-            break;
-        case 3:
-            return 0;
+            case 2: // Config game
+                menu = new Menu(config); 
+                delete menu;
+                break;
 
-        default:
-            std::cout << "Invalid choice!\n";
-            isValid = false;
-            cout << "Pick 1 to play or 2 to config the game: ";
-            break;
-        }
-    } while (!isValid);
-    delete player1;
-    delete player2;
-    delete menu;
-    delete game;
-    return 0;
+            case 3: // Exit game
+                return 0; 
+
+            default: // If invalid choice
+                std::cout << "Invalid choice!\n";
+                cout << "Pick 1 to play or 2 to config the game: ";
+                isValid = false;
+                break;
+            }
+        } while (!isValid);
+    }
 }

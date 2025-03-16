@@ -47,6 +47,7 @@ void Menu::chooseSize()
         if (m_boardSize >= 3)
         {
             config.setBoardSize(m_boardSize);
+            cout << std::endl;
             break;
         }
         else

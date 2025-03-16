@@ -14,11 +14,7 @@ using std::cout;
 using std::cin;
 
 std::ostringstream home;
-int choice;
 
-Config config;
-Player* player1 = nullptr; // Declare pointers to Player objects
-Player* player2 = nullptr;
 Menu* menu = nullptr;
 Game* game = nullptr;
 
