@@ -25,7 +25,7 @@ public:
 
     void getMove();
     void makeMove(char role);
-    bool checkWin();
+    bool checkWin(const char role) const;
     //bool isFull(); // checks for draw.
     void startMatch();
     

@@ -23,7 +23,7 @@ Game::Game(Player& p_player1, Player& p_player2, Config& p_config)
 Game::~Game() 
 {
 	// maybe make print of winner/loser here. If the line below works.
-	cout << "\n==================\n";
+	//cout << "\n==================\n";
 	delete m_board;
 }
 
@@ -60,25 +60,40 @@ void Game::getMove()
 
 void Game::makeMove(char role)
 {
+	// make an if to only modify board if there's an empty space in the coord wanted
 	m_board->modifyBoard(m_ligne-1, m_colonne-1, role);
 }
 
-bool Game::checkWin()
+bool Game::checkWin(const char role) const
 {
-	int ligne = 0;
-	int colonne = 0;
-	int size = m_config.getBoardSize() - 1; // Size de 0 à chiffre max.
+	int ligne = 0, colonne = 0, size = m_config.getBoardSize() - 1;; // Size de 0 à chiffre max.
+	bool rowWin = true, colWin = true, mainDiagWin = true, antiDiagWin = true;
 
-	for (ligne; ligne <= size; ligne++) { // check vertical line
-
+	for (ligne; ligne <= size; ligne++) 
+	{ 
 		for (colonne; colonne <= size; colonne++)
 		{
-			if (m_board->getValue(ligne, colonne) != m_board->getValue(ligne, size - colonne)) // Check for horizontal line
+			if (m_board->getValue(colonne, ligne) != role) // check vertical line
 			{
+				rowWin = false;
+			}
+
+			if (m_board->getValue(ligne, colonne) != role) // Check for horizontal line
+			{
+				colWin = false;
+			}
+			if (m_board->getValue(colonne, colonne) != role) // Check for main diagonal line
+			{
+				mainDiagWin = false;
+			}
+
+			if (m_board->getValue(size - colonne, colonne) != role) // Check for the anti diagonal line
+			{
+				antiDiagWin = false;				
 			}
 		}
 	}
-	return true;
+	return rowWin || colWin || mainDiagWin || antiDiagWin;
 }
 
 void Game::startMatch()
@@ -88,10 +103,16 @@ void Game::startMatch()
 	while (isPlaying) {
 		char role = 'X';
 		m_board->print();
+		if (checkWin(role))
+		{
+			cout << "Le joueur gagnant est: " << role << "\n\n";
+			break;
+		}
 		getMove();
 		if (counter % 2 == 0) { role = 'O'; }
 		makeMove(role);
 		counter++;
+		
 	}
 
 }
