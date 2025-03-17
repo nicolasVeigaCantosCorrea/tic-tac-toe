@@ -15,9 +15,11 @@ int main()
     Config config;
     Player player1("1", 'X'); // For now let's have 2 players only
     Player player2("2", 'O'); // The goal is to have 2-4 players possibly
+    Menu* menu = nullptr;
+    Game* game = nullptr;
 
     bool isValid = false;
-
+   
     while (true) 
     {
         std::cout << home.str();  // Probablement faire Class Home

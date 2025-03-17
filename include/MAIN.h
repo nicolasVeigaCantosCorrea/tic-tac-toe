@@ -15,7 +15,4 @@ using std::cin;
 
 std::ostringstream home;
 
-Menu* menu = nullptr;
-Game* game = nullptr;
-
 #endif

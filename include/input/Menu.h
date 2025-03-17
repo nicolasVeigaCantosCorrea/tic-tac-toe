@@ -4,10 +4,6 @@
 #include "Config.h"
 
 #include <iostream>
-#include <vector>
-
-using std::cout;
-using std::cin;
 
 class Menu
 {
@@ -15,7 +11,7 @@ private:
     /* data */
     int m_mode;
     int m_boardSize;
-    Config config;
+    Config& config;
 public:
     //declarer fonctions
     Menu(Config& p_config);

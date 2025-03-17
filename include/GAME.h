@@ -1,15 +1,9 @@
 #ifndef Game_H
 #define Game_H
 
-#include <iostream>
-#include <vector>
-
 #include "Board.h"
 #include "Player.h"
 #include "Config.h"
-
-using std::cout;
-using std::cin;
 
 class Game
 {
@@ -31,9 +25,11 @@ public:
 
     void getMove();
     void makeMove(char role);
-    //bool checkWin();
+    bool checkWin();
     //bool isFull(); // checks for draw.
     void startMatch();
+    
+    //bool restartGame(); // Fonction pour savoir si joeur veux continuer de jouer.
 };
 
 #endif

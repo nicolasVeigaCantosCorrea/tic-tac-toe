@@ -1,20 +1,23 @@
 #include "Board.h"
+#include <iostream>
+#include <sstream>
+
+using std::cout;
+
 
 Board::Board (int p_size) 
 : m_size(p_size), board(p_size, std::vector<char> (p_size,' '))
 {}
 
-void Board::modifyBoard (int& ligne, int& colonne, const char& role)
+void Board::modifyBoard (const int ligne, const int colonne, const char role)
 {
     if (ligne <= m_size && colonne <= m_size) // faite une classe pour gerer erreurs.
     {
-        ligne -= 1;
-        colonne -= 1;
         board[ligne][colonne] = role;
     }  
 } 
 
-char Board::getValue(int& ligne, int& colonne) const
+char Board::getValue(const int ligne, const int colonne) const
 {
     return board[ligne][colonne];
 }
@@ -28,7 +31,7 @@ void Board::print () const
     }
     intervalle << "\n";
     
-    cout << intervalle.str();
+    cout << "\n" << intervalle.str();
     for (int ligne = 0; ligne < m_size; ligne++) // À chaque ligne
     { 
         cout << ligne + 1;
@@ -46,6 +49,6 @@ void Board::print () const
     {
         colonnes << " " << i + 1 << "  ";
     }
-    colonnes << std::endl;
+    colonnes << "\n\n";
     cout << colonnes.str();
 }

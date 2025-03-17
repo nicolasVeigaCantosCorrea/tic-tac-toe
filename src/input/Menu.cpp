@@ -1,4 +1,6 @@
 #include "input/Menu.h"
+using std::cout;
+using std::cin;
 
 Menu::Menu(Config& p_config)
     : config(p_config)
