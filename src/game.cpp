@@ -60,7 +60,6 @@ void Game::getMove()
 
 void Game::makeMove(char role)
 {
-	// make an if to only modify board if there's an empty space in the coord wanted
 	m_board->modifyBoard(m_ligne-1, m_colonne-1, role);
 }
 
@@ -98,9 +97,10 @@ bool Game::checkWin(const char role) const
 
 void Game::startMatch()
 {
-	bool isPlaying = true;
+	bool isPlaying = true, isValid;
 	int counter = 1;
 	while (isPlaying) {
+		isValid = true;
 		char role = 'X';
 		m_board->print();
 		if (checkWin(role))
@@ -108,8 +108,17 @@ void Game::startMatch()
 			cout << "Le joueur gagnant est: " << role << "\n\n";
 			break;
 		}
-		getMove();
-		if (counter % 2 == 0) { role = 'O'; }
+		do
+		{
+			getMove();
+			if (m_board->getValue(m_ligne-1, m_colonne-1) != ' ') // This is really weird, fix m_ligne to do a -1 before sending to board.
+			{
+				cout << "\nThere's already a value to that place! \n";
+				isValid = false; 
+			}
+		} while (!isValid);
+
+		if (counter % 2 == 0) { role = 'O';}
 		makeMove(role);
 		counter++;
 		
