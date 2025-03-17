@@ -7,7 +7,7 @@ int main()
     home << "1) Play\n";
     home << "2) Options\n";
     home << "3) Exit\n\n";
-    home << "Pick 1 to play or 2 to config the game: ";
+    home << "Pick 1 to play or 2 to config or 3 to exit: ";
     // HOME FIN
 
     int choice; // Menu ou Play
@@ -27,6 +27,12 @@ int main()
         {
             isValid = true;
             cin >> choice;
+            // make a function of whats bellow
+            if (std::cin.fail()) { // Check if input failed
+                std::cin.clear(); // Reset error flags
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear buffer
+                std::cout << "Invalid input! Please enter a number.\n";
+            }
 
             switch (choice) {
             case 1: // Create Game
@@ -44,7 +50,7 @@ int main()
 
             default: // If invalid choice
                 std::cout << "Invalid choice!\n";
-                cout << "Pick 1 to play or 2 to config the game: ";
+                cout << "Pick 1 to play or 2 to config or 3 to exit: ";
                 isValid = false;
                 break;
             }

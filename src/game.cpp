@@ -11,6 +11,10 @@ using std::cin;
 Game::Game(Player& p_player1, Player& p_player2, Config& p_config)
 	:m_player1(p_player1), m_player2(p_player2), m_config(p_config), m_ligne(1), m_colonne(1)
 {
+	// Clear the input buffer to avoid leftover newlines
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	// Initialize the board and start the game
 	m_board = new Board(m_config.getBoardSize());
 	cout << "\n====== Game ======\n";
 	startMatch();
@@ -28,31 +32,28 @@ void Game::getMove()
 	std::string input;
 	while (true) 
 	{
-		cout << "Enter line and column separated by a comma (e.g., 1,2): ";
+		std::cout << "Enter line and column separated by a comma (e.g., 1,2): ";
+		std::getline(std::cin, input); // Read the entire input as a string
 
-		std::getline(std::cin, input);
 		std::stringstream ss(input);
 		char comma;
 
-		if (ss >> m_ligne >> comma >> m_colonne && comma == ',')
-		{
+		if (ss >> m_ligne >> comma >> m_colonne && comma == ',') {
+			// Check if the coordinates are within the valid range
 			if (m_ligne >= 1 && m_ligne <= m_config.getBoardSize() &&
-				m_colonne >= 1 && m_colonne <= m_config.getBoardSize())
-			{
+				m_colonne >= 1 && m_colonne <= m_config.getBoardSize()) {
 				break; // Valid input, exit the loop
 			}
-			else
-			{
+			else {
 				std::cout << "Invalid coordinates! Please enter values between 1 and "
 					<< m_config.getBoardSize() << ".\n";
-
 			}
 		}
-
-		else 
-		{
+		else {
 			std::cout << "Invalid input! Please use the format 'line,column' (e.g., 1,2).\n";
 		}
+
+		// Clear the input buffer only if the input was invalid
 		std::cin.clear();
 	}
 }
@@ -87,7 +88,6 @@ void Game::startMatch()
 	while (isPlaying) {
 		char role = 'X';
 		m_board->print();
-		cout << m_config.getBoardSize();
 		getMove();
 		if (counter % 2 == 0) { role = 'O'; }
 		makeMove(role);
