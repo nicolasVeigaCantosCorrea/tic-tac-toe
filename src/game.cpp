@@ -18,9 +18,6 @@ Game::Game(Player& p_player1, Player& p_player2, Config& p_config)
 	startMatch();
 }
 
-Game::~Game() 
-{}
-
 void Game::getMove() 
 {
 	std::string input;

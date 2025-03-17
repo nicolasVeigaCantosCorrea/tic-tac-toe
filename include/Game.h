@@ -18,7 +18,6 @@ public:
     //declarer fonctions
 
     Game(Player& p_player1, Player& p_player2, Config& p_config);
-    ~Game(); 
 
     Game(const Game&) = delete; // Disable copy constructor
     Game& operator=(const Game&) = delete; // Disable assignment operator
