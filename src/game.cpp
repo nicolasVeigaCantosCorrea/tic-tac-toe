@@ -65,12 +65,12 @@ void Game::makeMove(char role)
 
 bool Game::checkWin(const char role) const
 {
-	int ligne = 0, colonne = 0, size = m_config.getBoardSize() - 1;; // Size de 0 à chiffre max.
+	int size = m_config.getBoardSize() - 1; // Size de 0 à chiffre max.
 	bool rowWin = true, colWin = true, mainDiagWin = true, antiDiagWin = true;
 
-	for (ligne; ligne <= size; ligne++) 
+	for ( int ligne = 0; ligne <= size; ligne++) 
 	{ 
-		for (colonne; colonne <= size; colonne++)
+		for (int colonne = 0; colonne <= size; colonne++)
 		{
 			if (m_board->getValue(colonne, ligne) != role) // check vertical line
 			{
@@ -95,19 +95,29 @@ bool Game::checkWin(const char role) const
 	return rowWin || colWin || mainDiagWin || antiDiagWin;
 }
 
+bool Game::isFull() const
+{
+	int size = m_config.getBoardSize();
+
+	for ( int ligne = 0; ligne < size; ligne++)
+	{
+		for ( int colonne = 0; colonne < size; colonne++)
+		{
+			if (m_board->getValue(ligne, colonne) == ' ') return false;
+		}
+	}
+	return true;
+}
+
 void Game::startMatch()
 {
 	bool isPlaying = true, isValid;
 	int counter = 1;
-	while (isPlaying) {
+	m_board->print();
+	while (isPlaying) 
+	{
 		isValid = true;
 		char role = 'X';
-		m_board->print();
-		if (checkWin(role))
-		{
-			cout << "Le joueur gagnant est: " << role << "\n\n";
-			break;
-		}
 		do
 		{
 			getMove();
@@ -120,7 +130,19 @@ void Game::startMatch()
 
 		if (counter % 2 == 0) { role = 'O';}
 		makeMove(role);
+		m_board->print();
 		counter++;
+
+		if (checkWin(role))
+		{
+			cout << "The winner is : " << role << "\n\n";
+			break;
+		}
+		if (isFull())
+		{
+			cout << "It's a tie!\n\n";
+			break;
+		}
 		
 	}
 

@@ -26,7 +26,7 @@ public:
     void getMove();
     void makeMove(char role);
     bool checkWin(const char role) const;
-    //bool isFull(); // checks for draw.
+    bool isFull() const; // checks for draw.
     void startMatch();
     
     //bool restartGame(); // Fonction pour savoir si joeur veux continuer de jouer.
