@@ -1,4 +1,5 @@
 #include "input/Menu.h"
+#include "sstream"
 using std::cout;
 using std::cin;
 
@@ -34,7 +35,22 @@ void Menu::chooseMode()
             cout << " ** Please write a valid option (1 or 2) **\n\n";
             cout << "Game mode picked: ";
         }
-    } 
+    }
+    if (m_mode == 2) 
+    {
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the buffer 
+        // Retirer cin.ignore une fois que tous les cin sont converti à std::getline.
+
+        std::string input;
+        while (true)
+        {
+            cout << "Do you wish to play first? (y/n): ";
+            std::getline(cin, input);
+            if (input == "n" || input == "y") break;
+            cout << "Invalid input! \n";
+        }
+        input == "y" ? config.SetPlayingFirst(true) : config.SetPlayingFirst(false);
+    }
 }
 
 void Menu::chooseSize()

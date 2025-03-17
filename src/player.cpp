@@ -14,8 +14,7 @@ char Player::getRole () const
     return m_role;
 }
 
-void Player::afficherInfo () const
+void Player::setRole(char p_role)
 {
-std::cout << "Nom: " << m_nom << "\n";
-std::cout << "joueurId: " << getRole() << "\n";
+    m_role = p_role;
 }

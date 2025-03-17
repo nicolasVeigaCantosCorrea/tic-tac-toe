@@ -11,6 +11,7 @@ private:
     /* data */
     int m_mode;
     int m_boardSize;
+    bool m_isFirst;
     Config& config;
 public:
     //declarer fonctions

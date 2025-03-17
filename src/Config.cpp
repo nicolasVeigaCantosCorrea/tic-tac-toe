@@ -10,6 +10,11 @@ void Config::setBoardSize(int p_size)
 	m_boardSize = p_size;
 }
 
+void Config::SetPlayingFirst(bool p_isFirst)
+{
+	m_isFirst = p_isFirst;
+}
+
 int Config::getMode() const
 {
 	return m_mode;
@@ -18,4 +23,9 @@ int Config::getMode() const
 int Config::getBoardSize() const
 {
 	return m_boardSize;
+}
+
+bool Config::getPlayingFirst() const
+{
+	return m_isFirst;
 }

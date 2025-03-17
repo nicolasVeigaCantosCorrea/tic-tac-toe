@@ -110,46 +110,65 @@ bool Game::isFull() const
 void Game::restartMatch()
 {
 	std::string input;
-	char choice;
 	while (true)
 	{
 		cout << "Do you wish to play again? (y/n): ";
 		std::getline(cin, input);
-		std::stringstream ss(input);
-		if (ss >> choice && (choice == 'n' || choice == 'y')) break;
+		if (input == "n" || input == "y") break;
 		cout << "Invalid input! \n";
 	}
 	cout << "\n";
-	if (choice == 'y') startMatch();
+	if (input == "y") startMatch();
 }
 
 void Game::startMatch()
 {
 	bool isPlaying = true, isValid;
 	int counter = 1;
-	m_board = new Board(m_config.getBoardSize());
+	int mode = m_config.getMode();
+	int modeAdd;
+	// If mode = 2 (PvM) mode + 1 to cycle through player and machine
+	// If mode = 1 (PvP) mode + 0 to NEVER cycle through player and machine
+	mode == 2 ? modeAdd = 1 : modeAdd = 0; 
+	
+
+	m_board = std::make_unique<Board>(m_config.getBoardSize());
 
 	cout << "\n====== Game ======\n";
 	m_board->print();
 
 	while (true) // One match
 	{
-		isValid = true; // Probably not the best place to have the getMove error handling
 		char role = 'X';
-		do
+		if (!m_config.getPlayingFirst()) mode += modeAdd; // Like this if mode = 2 && player NOT first, then robot starts as first.
+		if (mode % 2 == 0) 
 		{
-			getMove();
-			if (m_board->getValue(m_ligne - 1, m_colonne - 1) != ' ') // This is really weird, fix m_ligne to do a -1 before sending to board.
+			do
 			{
-				cout << "\nThere's already a value to that place! \n";
-				isValid = false;
-			}
-		} while (!isValid);
-
+				isValid = true; // Probably not the best place to have the getMove error handling
+				getMove();
+				if (m_board->getValue(m_ligne - 1, m_colonne - 1) != ' ') // This is really weird, fix m_ligne to do a -1 before sending to board.
+				{
+					cout << "\nThere's already a value to that place! \n";
+					isValid = false;
+				}
+			} while (!isValid);
+		}
+		else
+		{
+			// Send board reference to a method in AI class to list moves,
+			m_robot.setAllMoves(*m_board, m_config.getBoardSize());
+			// Call AI fonction to get move by picking a random list element from the above
+			m_robot.chooseMove();
+			m_ligne = m_robot.getMove()[0] + 1;
+			m_colonne = m_robot.getMove()[1] + 1;
+			cout << "Robot played move: " << m_ligne << ", " << m_colonne;
+		}
 		if (counter % 2 == 0) role = 'O';
 		makeMove(role);
 		m_board->print();
 		counter++;
+		if (m_config.getPlayingFirst()) mode += modeAdd; // Like this if mode = 2 && player first, then robot starts as first.
 
 		if (checkWin(role))
 		{
@@ -162,7 +181,6 @@ void Game::startMatch()
 			break;
 		}
 	}
-	delete m_board;	
 	restartMatch();
 }
 

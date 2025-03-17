@@ -8,4 +8,4 @@ include_directories(include)
 file(GLOB SOURCES "src/*.cpp" "!src/tempCodeRunnerFile.cpp")
 
 # Create an executable
-add_executable(program ${SOURCES} "include/input/Menu.h" "src/input/Menu.cpp" "include/Config.h" "src/Config.cpp")
+add_executable(program ${SOURCES} "include/input/Menu.h" "src/input/Menu.cpp" "include/Config.h" "src/Config.cpp" "include/AI.h" "src/AI.cpp")
