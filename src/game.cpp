@@ -14,18 +14,12 @@ Game::Game(Player& p_player1, Player& p_player2, Config& p_config)
 	// Clear the input buffer to avoid leftover newlines
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-	// Initialize the board and start the game
-	m_board = new Board(m_config.getBoardSize());
-	cout << "\n====== Game ======\n";
+	// Start the game
 	startMatch();
 }
 
 Game::~Game() 
-{
-	// maybe make print of winner/loser here. If the line below works.
-	//cout << "\n==================\n";
-	delete m_board;
-}
+{}
 
 void Game::getMove() 
 {
@@ -65,12 +59,13 @@ void Game::makeMove(char role)
 
 bool Game::checkWin(const char role) const
 {
-	int size = m_config.getBoardSize() - 1; // Size de 0 à chiffre max.
-	bool rowWin = true, colWin = true, mainDiagWin = true, antiDiagWin = true;
+	int size = m_config.getBoardSize(); // Size de 0 à chiffre max.
 
-	for ( int ligne = 0; ligne <= size; ligne++) 
-	{ 
-		for (int colonne = 0; colonne <= size; colonne++)
+	for (int ligne = 0; ligne < size; ligne++)
+	{
+		bool rowWin = true, colWin = true;
+
+		for (int colonne = 0; colonne < size; colonne++)
 		{
 			if (m_board->getValue(colonne, ligne) != role) // check vertical line
 			{
@@ -81,18 +76,24 @@ bool Game::checkWin(const char role) const
 			{
 				colWin = false;
 			}
-			if (m_board->getValue(colonne, colonne) != role) // Check for main diagonal line
+		}
+		if (rowWin || colWin) return true;
+	}
+
+	bool mainDiagWin = true, antiDiagWin = true;
+	for (int ligne = 0; ligne < size; ligne++)
+	{
+			if (m_board->getValue(ligne, ligne) != role) // Check for main diagonal line
 			{
 				mainDiagWin = false;
 			}
 
-			if (m_board->getValue(size - colonne, colonne) != role) // Check for the anti diagonal line
+			if (m_board->getValue(ligne, size - 1 - ligne) != role) // Check for the anti diagonal line
 			{
 				antiDiagWin = false;				
 			}
 		}
-	}
-	return rowWin || colWin || mainDiagWin || antiDiagWin;
+	return mainDiagWin || antiDiagWin;
 }
 
 bool Game::isFull() const
@@ -109,26 +110,46 @@ bool Game::isFull() const
 	return true;
 }
 
+void Game::restartMatch()
+{
+	std::string input;
+	char choice;
+	while (true)
+	{
+		cout << "Do you wish to play again? (y/n): ";
+		std::getline(cin, input);
+		std::stringstream ss(input);
+		if (ss >> choice && (choice == 'n' || choice == 'y')) break;
+		cout << "Invalid input! \n";
+	}
+	cout << "\n";
+	if (choice == 'y') startMatch();
+}
+
 void Game::startMatch()
 {
 	bool isPlaying = true, isValid;
 	int counter = 1;
+	m_board = new Board(m_config.getBoardSize());
+
+	cout << "\n====== Game ======\n";
 	m_board->print();
-	while (isPlaying) 
+
+	while (true) // One match
 	{
-		isValid = true;
+		isValid = true; // Probably not the best place to have the getMove error handling
 		char role = 'X';
 		do
 		{
 			getMove();
-			if (m_board->getValue(m_ligne-1, m_colonne-1) != ' ') // This is really weird, fix m_ligne to do a -1 before sending to board.
+			if (m_board->getValue(m_ligne - 1, m_colonne - 1) != ' ') // This is really weird, fix m_ligne to do a -1 before sending to board.
 			{
 				cout << "\nThere's already a value to that place! \n";
-				isValid = false; 
+				isValid = false;
 			}
 		} while (!isValid);
 
-		if (counter % 2 == 0) { role = 'O';}
+		if (counter % 2 == 0) role = 'O';
 		makeMove(role);
 		m_board->print();
 		counter++;
@@ -143,7 +164,8 @@ void Game::startMatch()
 			cout << "It's a tie!\n\n";
 			break;
 		}
-		
 	}
-
+	delete m_board;	
+	restartMatch();
 }
+

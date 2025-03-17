@@ -29,7 +29,7 @@ public:
     bool isFull() const; // checks for draw.
     void startMatch();
     
-    //bool restartGame(); // Fonction pour savoir si joeur veux continuer de jouer.
+    void restartMatch(); // Fonction pour savoir si joeur veux continuer de jouer.
 };
 
 #endif
