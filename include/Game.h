@@ -15,7 +15,8 @@ private:
     const Player& m_player2;
     const Config& m_config;
     AI m_robot;
-    std::unique_ptr<Board> m_board;
+    //std::unique_ptr<Board> m_board;
+    Board m_board;
 public:
     //declarer fonctions
 

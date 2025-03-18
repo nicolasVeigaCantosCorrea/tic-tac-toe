@@ -9,12 +9,12 @@ using std::cin;
 
 
 Game::Game(Player& p_player1, Player& p_player2, Config& p_config)
-	:m_player1(p_player1), m_player2(p_player2), m_config(p_config), m_ligne(1), m_colonne(1)
+	:m_player1(p_player1), m_player2(p_player2), m_config(p_config), m_ligne(1), m_colonne(1), m_board(m_config.getBoardSize())
 {
 	// Clear the input buffer to avoid leftover newlines
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-	// Start the game
+	// Start the game and begin board;
 	startMatch();
 }
 
@@ -51,7 +51,7 @@ void Game::getMove()
 
 void Game::makeMove(char role)
 {
-	m_board->modifyBoard(m_ligne-1, m_colonne-1, role);
+	m_board.modifyBoard(m_ligne-1, m_colonne-1, role);
 }
 
 bool Game::checkWin(const char role) const
@@ -64,12 +64,12 @@ bool Game::checkWin(const char role) const
 
 		for (int colonne = 0; colonne < size; colonne++)
 		{
-			if (m_board->getValue(colonne, ligne) != role) // check vertical line
+			if (m_board.getValue(colonne, ligne) != role) // check vertical line
 			{
 				rowWin = false;
 			}
 
-			if (m_board->getValue(ligne, colonne) != role) // Check for horizontal line
+			if (m_board.getValue(ligne, colonne) != role) // Check for horizontal line
 			{
 				colWin = false;
 			}
@@ -80,12 +80,12 @@ bool Game::checkWin(const char role) const
 	bool mainDiagWin = true, antiDiagWin = true;
 	for (int ligne = 0; ligne < size; ligne++)
 	{
-			if (m_board->getValue(ligne, ligne) != role) // Check for main diagonal line
+			if (m_board.getValue(ligne, ligne) != role) // Check for main diagonal line
 			{
 				mainDiagWin = false;
 			}
 
-			if (m_board->getValue(ligne, size - 1 - ligne) != role) // Check for the anti diagonal line
+			if (m_board.getValue(ligne, size - 1 - ligne) != role) // Check for the anti diagonal line
 			{
 				antiDiagWin = false;				
 			}
@@ -101,7 +101,7 @@ bool Game::isFull() const
 	{
 		for ( int colonne = 0; colonne < size; colonne++)
 		{
-			if (m_board->getValue(ligne, colonne) == ' ') return false;
+			if (m_board.getValue(ligne, colonne) == ' ') return false;
 		}
 	}
 	return true;
@@ -132,10 +132,10 @@ void Game::startMatch()
 	mode == 2 ? modeAdd = 1 : modeAdd = 0; 
 	
 
-	m_board = std::make_unique<Board>(m_config.getBoardSize());
+	m_board.restartBoard();
 
 	cout << "\n====== Game ======\n";
-	m_board->print();
+	m_board.print();
 
 	while (true) // One match
 	{
@@ -147,7 +147,7 @@ void Game::startMatch()
 			{
 				isValid = true; // Probably not the best place to have the getMove error handling
 				getMove();
-				if (m_board->getValue(m_ligne - 1, m_colonne - 1) != ' ') // This is really weird, fix m_ligne to do a -1 before sending to board.
+				if (m_board.getValue(m_ligne - 1, m_colonne - 1) != ' ') // This is really weird, fix m_ligne to do a -1 before sending to board.
 				{
 					cout << "\nThere's already a value to that place! \n";
 					isValid = false;
@@ -157,7 +157,7 @@ void Game::startMatch()
 		else
 		{
 			// Send board reference to a method in AI class to list moves,
-			m_robot.setAllMoves(*m_board, m_config.getBoardSize());
+			m_robot.setAllMoves(m_board, m_config.getBoardSize());
 			// Call AI fonction to get move by picking a random list element from the above
 			m_robot.chooseMove();
 			m_ligne = m_robot.getMove()[0] + 1;
@@ -166,7 +166,7 @@ void Game::startMatch()
 		}
 		if (counter % 2 == 0) role = 'O';
 		makeMove(role);
-		m_board->print();
+		m_board.print();
 		counter++;
 		if (m_config.getPlayingFirst()) mode += modeAdd; // Like this if mode = 2 && player first, then robot starts as first.
 

@@ -22,6 +22,17 @@ char Board::getValue(const int ligne, const int colonne) const
     return board[ligne][colonne];
 }
 
+void Board::restartBoard()
+{
+    for (int ligne = 0; ligne < m_size; ligne++) // À chaque ligne
+    {
+        for (int colonne = 0; colonne < m_size; colonne++) // À chaque colonne
+        {
+            modifyBoard(ligne, colonne, ' ');
+        }
+    }
+}
+
 void Board::print () const
 {
     std::ostringstream intervalle; // print des petits traits entre lignes
